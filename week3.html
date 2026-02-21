@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McKinley Family Meal Plan: Week 3 (V2)</title>
+    <style>
+        :root {
+            --primary: #1b5e20;
+            --accent: #d32f2f;
+            --bg: #fafafa;
+        }
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background: var(--bg); margin: 0; padding: 20px; color: #2c3e50; }
+        .container { max-width: 900px; margin: 0 auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        h1 { color: var(--primary); text-align: center; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 30px; }
+        
+        .tabs { display: flex; overflow-x: auto; border-bottom: 2px solid #ddd; margin-bottom: 25px; scrollbar-width: none; }
+        .tab-btn { padding: 15px 25px; cursor: pointer; border: none; background: none; font-weight: bold; font-size: 15px; white-space: nowrap; transition: 0.2s; color: #7f8c8d; }
+        .tab-btn:hover { color: var(--primary); background: #f1f8e9; }
+        .tab-btn.active { border-bottom: 4px solid var(--primary); color: var(--primary); }
+
+        .recipe-content { display: none; animation: slideIn 0.3s ease-out; }
+        .recipe-content.active { display: block; }
+
+        .prep-card { background: #e3f2fd; border-left: 5px solid #2196f3; padding: 15px; border-radius: 4px; margin-bottom: 20px; }
+        .prep-card h4 { margin: 0 0 10px 0; color: #0d47a1; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; }
+        
+        .tag { background: #e8f5e9; color: #2e7d32; padding: 4px 10px; border-radius: 20px; font-size: 11px; text-transform: uppercase; margin-left: 10px; }
+        .toddler-box { background: #fffde7; border-left: 5px solid #fbc02d; padding: 15px; margin-top: 20px; border-radius: 4px; }
+        
+        h3 { color: var(--primary); margin-top: 25px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        ul, ol { line-height: 1.7; font-size: 16px; }
+        li { margin-bottom: 12px; }
+
+        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>McKinley Family Meals: Week 3</h1>
+    
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab(event, 'day1')">Day 1: Caprese Sliders</button>
+        <button class="tab-btn" onclick="openTab(event, 'day2')">Day 2: Lemon Chicken Orzo</button>
+        <button class="tab-btn" onclick="openTab(event, 'day3')">Day 3: Honey-Mustard Salmon</button>
+    </div>
+
+    <div id="day1" class="recipe-content active">
+        <h2>Blackstone Caprese Sliders <span class="tag">Blackstone & Basil</span></h2>
+        
+        <div class="prep-card">
+            <h4>Morning Prep Checklist</h4>
+            <ul>
+                <li><strong>Thaw:</strong> Ensure 1 lb chicken breast is ready.</li>
+                <li><strong>Chop:</strong> Slice chicken into slider-sized squares. Slice mozzarella and halve grape tomatoes.</li>
+                <li><strong>Harvest:</strong> Pluck 12 basil leaves.</li>
+            </ul>
+        </div>
+
+        <h3>Cooking Instructions:</h3>
+        <ol>
+            <li>Heat Blackstone to medium-high. Season chicken with salt, pepper, and Italian seasoning.</li>
+            <li>Grill chicken 4-5 mins per side. Add mozzarella during the last 2 mins to melt.</li>
+            <li>Toast slider buns.</li>
+            <li><strong>Assembly:</strong> Bun bottom > Chicken with cheese > <strong>Basil leaf</strong> > Tomato > Balsamic glaze > Top bun.</li>
+        </ol>
+        <div class="toddler-box"><strong>For Mason:</strong> Serve deconstructed (chicken bites, cheese cubes, tomato slices).</div>
+    </div>
+
+    <div id="day2" class="recipe-content">
+        <h2>One-Pan Lemon Butter Chicken & Orzo <span class="tag">Indoor Only</span></h2>
+
+        <div class="prep-card">
+            <h4>Morning Prep Checklist</h4>
+            <ul>
+                <li><strong>Thaw:</strong> Ensure 1 lb chicken breast is thawed.</li>
+                <li><strong>Chop:</strong> Dice chicken into bite-sized pieces. Mince 3 cloves of garlic.</li>
+                <li><strong>Zest:</strong> Zest and juice 1 lemon.</li>
+            </ul>
+        </div>
+
+        <h3>Cooking Instructions:</h3>
+        <ol>
+            <li>In a large skillet, sauté diced chicken until golden. Remove and set aside.</li>
+            <li>In the same pan, add a bit of butter and sauté garlic for 30 seconds. Add 1 cup dry orzo and toast for 1 minute.</li>
+            <li>Add 2 cups chicken broth and lemon juice. Bring to a simmer, cover, and cook for 8-10 mins (until orzo is tender).</li>
+            <li>Stir in chicken, 1/4 cup heavy cream, 1/4 cup parmesan, and lemon zest. Stir until creamy.</li>
+        </ol>
+        <div class="toddler-box"><strong>For Mason:</strong> This is basically a "creamy rice" texture. Ensure it's not too hot before serving.</div>
+    </div>
+
+    <div id="day3" class="recipe-content">
+        <h2>Sheet Pan Honey-Mustard Salmon <span class="tag">Oven Only</span></h2>
+
+        <div class="prep-card">
+            <h4>Morning Prep Checklist</h4>
+            <ul>
+                <li><strong>Thaw:</strong> Ensure salmon fillets are thawed.</li>
+                <li><strong>Chop:</strong> Halve baby potatoes and trim green beans.</li>
+                <li><strong>Mix:</strong> Whisk 2 tbsp honey and 1 tbsp Dijon mustard.</li>
+            </ul>
+        </div>
+
+        <h3>Cooking Instructions:</h3>
+        <ol>
+            <li>Preheat oven to 400°F.</li>
+            <li>Toss potatoes with oil, salt, and pepper on a sheet pan. Roast for 15 mins.</li>
+            <li>Add salmon and green beans to the pan. Brush salmon with honey-mustard.</li>
+            <li>Roast for 10-12 mins until salmon flakes with a fork.</li>
+        </ol>
+        <div class="toddler-box"><strong>For Mason:</strong> Flake the salmon into bites. Serve green beans as "fries."</div>
+    </div>
+
+</div>
+
+<script>
+    function openTab(evt, dayId) {
+        var i, content, links;
+        content = document.getElementsByClassName("recipe-content");
+        for (i = 0; i < content.length; i++) {
+            content[i].classList.remove("active");
+        }
+        links = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < links.length; i++) {
+            links[i].classList.remove("active");
+        }
+        document.getElementById(dayId).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    }
+</script>
+
+</body>
+</html>
