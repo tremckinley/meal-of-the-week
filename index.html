@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McKinley Family Meal Plan: Indoor Variety</title>
+    <style>
+        :root {
+            --primary: #1b5e20;
+            --accent: #d32f2f;
+            --bg: #fafafa;
+        }
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background: var(--bg); margin: 0; padding: 20px; color: #2c3e50; }
+        .container { max-width: 900px; margin: 0 auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        h1 { color: var(--primary); text-align: center; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 30px; }
+        
+        .tabs { display: flex; overflow-x: auto; border-bottom: 2px solid #ddd; margin-bottom: 25px; scrollbar-width: none; }
+        .tab-btn { padding: 15px 25px; cursor: pointer; border: none; background: none; font-weight: bold; font-size: 15px; white-space: nowrap; transition: 0.2s; color: #7f8c8d; }
+        .tab-btn:hover { color: var(--primary); background: #f1f8e9; }
+        .tab-btn.active { border-bottom: 4px solid var(--primary); color: var(--primary); }
+
+        .recipe-content { display: none; animation: slideIn 0.3s ease-out; }
+        .recipe-content.active { display: block; }
+
+        .prep-card { background: #e3f2fd; border-left: 5px solid #2196f3; padding: 15px; border-radius: 4px; margin-bottom: 20px; }
+        .prep-card h4 { margin: 0 0 10px 0; color: #0d47a1; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; }
+        
+        .tag { background: #e8f5e9; color: #2e7d32; padding: 4px 10px; border-radius: 20px; font-size: 11px; text-transform: uppercase; margin-left: 10px; }
+        .toddler-box { background: #fffde7; border-left: 5px solid #fbc02d; padding: 15px; margin-top: 20px; border-radius: 4px; }
+        
+        h3 { color: var(--primary); margin-top: 25px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        ul, ol { line-height: 1.7; font-size: 16px; }
+        li { margin-bottom: 12px; }
+
+        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>McKinley Family Meals: Indoor Variety</h1>
+    
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab(event, 'day1')">Day 1: Caprese Chicken</button>
+        <button class="tab-btn" onclick="openTab(event, 'day2')">Day 2: Cast Iron Steak</button>
+        <button class="tab-btn" onclick="openTab(event, 'day3')">Day 3: Pesto Tortellini</button>
+        <button class="tab-btn" onclick="openTab(event, 'day4')">Day 4: Steakhouse Salad</button>
+        <button class="tab-btn" onclick="openTab(event, 'day5')">Day 5: Lemon Butter Salmon</button>
+    </div>
+
+    <div id="day1" class="recipe-content active">
+        <h2>Skillet Caprese Chicken <span class="tag">Basil Used</span></h2>
+        <div class="prep-card">
+            <h4>Morning Prep Checklist</h4>
+            <ul>
+                <li><strong>Thaw:</strong> 1 lb chicken breasts.</li>
+                <li><strong>Chop:</strong> Pound chicken to even thickness; halve 1 pint cherry tomatoes.</li>
+                <li><strong>Harvest:</strong> Pluck 1/2 cup fresh basil leaves.</li>
+            </ul>
+        </div>
+        <h3>Cooking Instructions:</h3>
+        <ol>
+            <li>Season chicken with salt, pepper, and garlic powder. Sear in a skillet over medium-high heat until cooked through.</li>
+            <li>Add halved tomatoes to the pan in the last 3 mins until they soften.</li>
+            <li>Top chicken with fresh mozzarella slices; cover for 1 min to melt.</li>
+            <li>Remove from heat. Garnish with <strong>fresh basil</strong> and a drizzle of balsamic glaze.</li>
+        </ol>
+        <div class="toddler-box"><strong>For Mason:</strong> Serve chicken bites and plain mozzarella pearls.</div>
+    </div>
+
+    <div id="day2" class="recipe-content">
+        <h2>Cast Iron Butter-Basted Steak <span class="tag">High Protein</span></h2>
+        <div class="prep-card">
+            <h4>Morning Prep Checklist</h4>
+            <ul>
+                <li><strong>Prep:</strong> Pat steaks dry and salt them early; keep in fridge uncovered.</li>
+                <li><strong>Chop:</strong> Wash and trim green beans; peel potatoes for mashing.</li>
+            </ul>
+        </div>
+        <h3>Cooking Instructions:</h3>
+        <ol>
+            <li>Heat cast iron until very hot. Sear steaks (cook an extra one for Day 4's salad!).</li>
+            <li>Baste with butter, garlic cloves, and rosemary during the final 2 mins.</li>
+            <li>Let meat rest for 10 mins before slicing.</li>
+            <li>Serve with buttery mashed potatoes and pan-seared green beans.</li>
+        </ol>
+        <div class="toddler-box"><strong>For Mason:</strong> Very thin strips of steak and "cloud" mashed potatoes.</div>
+    </div>
+
+    <div id="day3" class="recipe-content">
+        <h2>One-Pot Pesto Tortellini <span class="tag">Basil Used</span></h2>
+        <div class="prep-card">
+            <h4>Morning Prep Checklist</h4>
+            <ul>
+                <li><strong>Chop:</strong> Slice zucchini into half-moons and dice red bell pepper.</li>
+            </ul>
+        </div>
+        <h3>Cooking Instructions:</h3>
+        <ol>
+            <li>Boil refrigerated tortellini according to package instructions.</li>
+            <li>In a skillet, sauté zucchini and peppers in olive oil until tender-crisp.</li>
+            <li>Drain pasta and combine with veggies.</li>
+            <li>Stir in pesto and garnish with <strong>fresh basil</strong> and parmesan.</li>
+        </ol>
+        <div class="toddler-box"><strong>For Mason:</strong> Set aside a few tortellini before adding pesto if he prefers them plain.</div>
+    </div>
+
+    <div id="day4" class="recipe-content">
+        <h2>Steakhouse-Style Salad <span class="tag">Quick Assembly</span></h2>
+        <div class="prep-card">
+            <h4>Morning Prep Checklist</h4>
+            <ul>
+                <li><strong>Pickle:</strong> Quickly pickle thin red onion slices in vinegar, sugar, and salt.</li>
+                <li><strong>Chop:</strong> Slice cucumber and the remaining cherry tomatoes.</li>
+            </ul>
+        </div>
+        <h3>Cooking Instructions:</h3>
+        <ol>
+            <li>Slice the leftover cold steak from Day 2 into thin strips.</li>
+            <li>Toss mixed greens with cucumber, tomatoes, and pickled onions.</li>
+            <li>Top with steak strips and a balsamic or blue cheese vinaigrette.</li>
+            <li>Serve with a side of warm sourdough bread.</li>
+        </ol>
+        <div class="toddler-box"><strong>For Mason:</strong> Serve as a "snack plate" with steak strips, cucumber "coins," and bread.</div>
+    </div>
+
+    <div id="day5" class="recipe-content">
+        <h2>Lemon Butter Salmon & Asparagus <span class="tag">Oven Only</span></h2>
+        <div class="prep-card">
+            <h4>Morning Prep Checklist</h4>
+            <ul>
+                <li><strong>Thaw:</strong> 1 lb salmon fillets.</li>
+                <li><strong>Trim:</strong> Snap woody ends off asparagus.</li>
+            </ul>
+        </div>
+        <h3>Cooking Instructions:</h3>
+        <ol>
+            <li>Preheat oven to 375°F. Place salmon and asparagus on a sheet pan.</li>
+            <li>Drizzle with melted butter, lemon zest, salt, and pepper.</li>
+            <li>Roast for 12-15 mins. Serve over cooked quinoa.</li>
+        </ol>
+        <div class="toddler-box"><strong>For Mason:</strong> Flake salmon into small bits; serve asparagus as "green fries."</div>
+    </div>
+
+</div>
+
+<script>
+    function openTab(evt, dayId) {
+        var i, content, links;
+        content = document.getElementsByClassName("recipe-content");
+        for (i = 0; i < content.length; i++) {
+            content[i].classList.remove("active");
+        }
+        links = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < links.length; i++) {
+            links[i].classList.remove("active");
+        }
+        document.getElementById(dayId).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    }
+</script>
+
+</body>
+</html>
