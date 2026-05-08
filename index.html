@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Plan</title>
+    <style>
+        :root {
+            --primary: #2e7d32;
+            --accent: #f57c00;
+            --bg: #f1f8e9;
+            --card-bg: #ffffff;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            background-color: var(--bg);
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container { max-width: 850px; margin: 0 auto; }
+        header { text-align: center; margin-bottom: 30px; }
+        .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+        .tab-btn {
+            padding: 12px;
+            background: #e0e0e0;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            flex: 1;
+            min-width: 140px;
+        }
+        .tab-btn.active { background: var(--primary); color: white; }
+        .meal-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            display: none;
+        }
+        .meal-card.active { display: block; }
+        h2 { color: var(--primary); margin-top: 0; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+        ul, ol { padding-left: 20px; }
+        .tip {
+            background: #fff3e0;
+            padding: 15px;
+            border-left: 5px solid var(--accent);
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Weekly Plan</h1>
+        <p>Clean fuel for the family, scaled for 2 adults and 1 toddler.</p>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-btn active" onclick="showMeal(0)">1. Garlic Shrimp</button>
+        <button class="tab-btn" onclick="showMeal(1)">2. Turkey & Sweet Potato</button>
+        <button class="tab-btn" onclick="showMeal(2)">3. Beef & Peppers</button>
+        <button class="tab-btn" onclick="showMeal(3)">4. Roasted Chicken</button>
+    </div>
+
+    <div id="meal-0" class="meal-card active">
+        <h2>Garlic-Lemon Shrimp & Broccoli</h2>
+        <div class="grid">
+            <div>
+                <h3>Ingredients</h3>
+                <ul>
+                    <li>1.5 lbs Shrimp (peeled/deveined)</li>
+                    <li>2 heads Broccoli (small florets)</li>
+                    <li>3 cloves Garlic (minced)</li>
+                    <li>1 Lemon (zested and juiced)</li>
+                    <li>2 tbsp Olive Oil or Ghee</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Instructions</h3>
+                <ol>
+                    <li>Preheat griddle to medium-high.</li>
+                    <li>Toss shrimp and broccoli in a bowl with oil, garlic, and lemon zest.</li>
+                    <li>Spread on the griddle. Cook shrimp 2-3 mins per side until pink.</li>
+                    <li>Sauté broccoli until tender-crisp (about 5-6 mins).</li>
+                    <li>Drizzle with lemon juice before serving.</li>
+                </ol>
+            </div>
+        </div>
+        <div class="tip"><strong>Toddler Tip:</strong> Cut the shrimp into pea-sized bites and ensure the broccoli florets are soft enough to mash.</div>
+    </div>
+
+    <div id="meal-1" class="meal-card">
+        <h2>Ground Turkey & Sweet Potato Skillet</h2>
+        <div class="grid">
+            <div>
+                <h3>Ingredients</h3>
+                <ul>
+                    <li>1.5 lbs Ground Turkey</li>
+                    <li>2 Sweet Potatoes (small dice)</li>
+                    <li>1 Bell Pepper (diced)</li>
+                    <li>1/2 Onion (finely chopped)</li>
+                    <li>1/2 tsp Garlic Powder & Salt</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Instructions</h3>
+                <ol>
+                    <li>Sauté sweet potatoes in a skillet with oil/ghee until they start to soften (8-10 mins).</li>
+                    <li>Add onions and peppers, cooking until translucent.</li>
+                    <li>Add ground turkey and seasonings.</li>
+                    <li>Cook until turkey is browned and sweet potatoes are fork-tender.</li>
+                </ol>
+            </div>
+        </div>
+        <div class="tip"><strong>WFH Tip:</strong> Dice the sweet potatoes very small (1/4 inch) to cut the cooking time in half.</div>
+    </div>
+
+    <div id="meal-2" class="meal-card">
+        <h2>Beef & Peppers with Roasted Potatoes</h2>
+        <div class="grid">
+            <div>
+                <h3>Ingredients</h3>
+                <ul>
+                    <li>1.5 lbs Ground Beef</li>
+                    <li>2 Bell Peppers (sliced)</li>
+                    <li>1.5 lbs Potatoes (cubed)</li>
+                    <li>1/2 Onion (sliced)</li>
+                    <li>Olive Oil, Salt, Pepper</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Instructions</h3>
+                <ol>
+                    <li>Toss potato cubes in oil and salt. Roast at 400°F for 25-30 mins.</li>
+                    <li>While potatoes roast, brown ground beef in a skillet.</li>
+                    <li>Add onions and peppers to the beef and sauté until soft.</li>
+                    <li>Serve the beef/pepper mix over or alongside the roasted potatoes.</li>
+                </ol>
+            </div>
+        </div>
+        <div class="tip"><strong>Note:</strong> Ensure your oil is compliant (no soybean or canola oil).</div>
+    </div>
+
+    <div id="meal-3" class="meal-card">
+        <h2>Lemon-Herb Roasted Chicken & Carrots</h2>
+        <div class="grid">
+            <div>
+                <h3>Ingredients</h3>
+                <ul>
+                    <li>2 lbs Chicken Thighs</li>
+                    <li>1 lb Carrots (thick coins)</li>
+                    <li>1 Lemon (sliced)</li>
+                    <li>1 tbsp Dried Oregano & Thyme</li>
+                    <li>3 tbsp Olive Oil</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Instructions</h3>
+                <ol>
+                    <li>Preheat oven to 400°F.</li>
+                    <li>Place chicken and carrots on a large sheet pan.</li>
+                    <li>Drizzle with oil and rub in the herbs, salt, and pepper.</li>
+                    <li>Top chicken with lemon slices.</li>
+                    <li>Roast for 35-40 mins until chicken is 165°F and carrots are very soft.</li>
+                </ol>
+            </div>
+        </div>
+        <div class="tip"><strong>Toddler Tip:</strong> Roasted carrots become very sweet and soft, making them a perfect side for pickier eaters.</div>
+    </div>
+</div>
+
+<script>
+    function showMeal(index) {
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.meal-card').forEach(card => card.classList.remove('active'));
+        document.querySelectorAll('.tab-btn')[index].classList.add('active');
+        document.getElementById('meal-' + index).classList.add('active');
+    }
+</script>
+
+</body>
+</html>
