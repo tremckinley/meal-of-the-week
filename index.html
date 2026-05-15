@@ -3,54 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meal Plan</title>
+    <title>WFH Summer Whole30 Meal Plan</title>
     <style>
         :root {
-            --primary: #2e7d32;
-            --accent: #f57c00;
-            --bg: #f1f8e9;
+            --bg-color: #f4f6f9;
             --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --border: #cbd5e1;
+            --tip-wfh-bg: #eff6ff;
+            --tip-wfh-border: #bfdbfe;
+            --tip-toddler-bg: #f0fdf4;
+            --tip-toddler-border: #bbf7d0;
         }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
             line-height: 1.6;
-            background-color: var(--bg);
-            color: #333;
-            margin: 0;
-            padding: 20px;
+            padding: 2rem 1rem;
         }
-        .container { max-width: 850px; margin: 0 auto; }
-        header { text-align: center; margin-bottom: 30px; }
-        .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 2.25rem;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+        }
+
         .tab-btn {
-            padding: 12px;
-            background: #e0e0e0;
+            background-color: #e2e8f0;
             border: none;
-            border-radius: 6px;
+            color: var(--text-muted);
+            padding: 0.75rem 1.2rem;
+            border-radius: 0.5rem;
             cursor: pointer;
             font-weight: 600;
-            flex: 1;
-            min-width: 140px;
+            font-size: 0.95rem;
+            white-space: nowrap;
+            transition: all 0.2s ease;
         }
-        .tab-btn.active { background: var(--primary); color: white; }
+
+        .tab-btn:hover {
+            background-color: #cbd5e1;
+            color: var(--text-main);
+        }
+
+        .tab-btn.active {
+            background-color: var(--accent);
+            color: #ffffff;
+        }
+
         .meal-card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
             display: none;
         }
-        .meal-card.active { display: block; }
-        h2 { color: var(--primary); margin-top: 0; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
-        ul, ol { padding-left: 20px; }
-        .tip {
-            background: #fff3e0;
-            padding: 15px;
-            border-left: 5px solid var(--accent);
-            margin-top: 20px;
-            border-radius: 4px;
+
+        .meal-card.active {
+            display: block;
+        }
+
+        .meal-title {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--bg-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            margin: 1.5rem 0 0.7rem 0;
+            color: var(--text-main);
+        }
+
+        ul, ol {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .tips-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 640px) {
+            .tips-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .tip-box {
+            padding: 1.25rem;
+            border-radius: 0.5rem;
+            border: 1px solid transparent;
+        }
+
+        .tip-box h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tip-wfh {
+            background-color: var(--tip-wfh-bg);
+            border-color: var(--tip-wfh-border);
+            color: #1e40af;
+        }
+
+        .tip-toddler {
+            background-color: var(--tip-toddler-bg);
+            border-color: var(--tip-toddler-border);
+            color: #166534;
         }
     </style>
 </head>
@@ -58,130 +164,173 @@
 
 <div class="container">
     <header>
-        <h1>Weekly Plan</h1>
-        <p>Clean fuel for the family, scaled for 2 adults and 1 toddler.</p>
+        <h1>Summer Whole30 Menu</h1>
+        <p class="subtitle">Onion-Free, Tomato-Free, Toddler-Friendly & Fast</p>
     </header>
 
-    <div class="tabs">
-        <button class="tab-btn active" onclick="showMeal(0)">1. Garlic Shrimp</button>
-        <button class="tab-btn" onclick="showMeal(1)">2. Turkey & Sweet Potato</button>
-        <button class="tab-btn" onclick="showMeal(2)">3. Beef & Peppers</button>
-        <button class="tab-btn" onclick="showMeal(3)">4. Roasted Chicken</button>
-    </div>
+    <nav class="tabs" role="tablist">
+        <button class="tab-btn active" onclick="switchTab(event, 'meal1')">Meal 1: Chicken & Asparagus</button>
+        <button class="tab-btn" onclick="switchTab(event, 'meal2')">Meal 2: Bacon Burgers & Fries</button>
+        <button class="tab-btn" onclick="switchTab(event, 'meal3')">Meal 3: Salmon & Squash</button>
+        <button class="tab-btn" onclick="switchTab(event, 'meal4')">Meal 4: Coconut Lime Chicken</button>
+    </nav>
 
-    <div id="meal-0" class="meal-card active">
-        <h2>Garlic-Lemon Shrimp & Broccoli</h2>
-        <div class="grid">
-            <div>
-                <h3>Ingredients</h3>
-                <ul>
-                    <li>1.5 lbs Shrimp (peeled/deveined)</li>
-                    <li>2 heads Broccoli (small florets)</li>
-                    <li>3 cloves Garlic (minced)</li>
-                    <li>1 Lemon (zested and juiced)</li>
-                    <li>2 tbsp Olive Oil or Ghee</li>
-                </ul>
+    <!-- MEAL 1 -->
+    <div id="meal1" class="meal-card active">
+        <h2 class="meal-title">Lemon Garlic Chicken Breast & Asparagus</h2>
+        <p>A fast, high-heat Blackstone griddle meal that keeps cooking heat entirely outside [cite: User Summary].</p>
+        
+        <h3 class="section-title">Ingredients</h3>
+        <ul>
+            <li>2 lbs chicken breasts (thinly sliced cutlets) [cite: User Summary]</li>
+            <li>2 bunches asparagus spears (tough ends trimmed) [cite: User Summary]</li>
+            <li>3 tbsp avocado oil [cite: User Summary]</li>
+            <li>1 head garlic (cloves minced)</li>
+            <li>1 fresh lime (juiced)</li>
+            <li>Salt, pepper, garlic powder</li>
+        </ul>
+
+        <h3 class="section-title">Instructions</h3>
+        <ol>
+            <li>Preheat your outdoor griddle to medium-high heat [cite: User Summary].</li>
+            <li>Season chicken cutlets generously with avocado oil, salt, pepper, and garlic powder.</li>
+            <li>Toss asparagus spears in avocado oil, minced garlic, and salt.</li>
+            <li>Lay chicken cutlets flat on one side of the griddle. Cook for 3–4 minutes per side until internal temperature hits 165°F.</li>
+            <li>Simultaneously, drop asparagus onto the other side of the griddle. Toss frequently, then trap under a melting dome with a tiny splash of water for 2–3 minutes to rapidly steam-soften them.</li>
+            <li>Remove everything, drizzle chicken with fresh lime juice, and let rest.</li>
+        </ol>
+
+        <div class="tips-container">
+            <div class="tip-box tip-wfh">
+                <h4>💻 WFH Efficiency Tip</h4>
+                <p>Buy pre-sliced chicken cutlets. Griddle setup to plate takes under 15 minutes flat, giving you an actual break during your lunch block.</p>
             </div>
-            <div>
-                <h3>Instructions</h3>
-                <ol>
-                    <li>Preheat griddle to medium-high.</li>
-                    <li>Toss shrimp and broccoli in a bowl with oil, garlic, and lemon zest.</li>
-                    <li>Spread on the griddle. Cook shrimp 2-3 mins per side until pink.</li>
-                    <li>Sauté broccoli until tender-crisp (about 5-6 mins).</li>
-                    <li>Drizzle with lemon juice before serving.</li>
-                </ol>
+            <div class="tip-box tip-toddler">
+                <h4>👶 Toddler Safety & Texture</h4>
+                <p>The griddle dome ensures the asparagus gets fork-tender rather than rubbery. Cut chicken across the grain into tiny, easily chewable cubes for Mason [cite: User Summary].</p>
             </div>
         </div>
-        <div class="tip"><strong>Toddler Tip:</strong> Cut the shrimp into pea-sized bites and ensure the broccoli florets are soft enough to mash.</div>
     </div>
 
-    <div id="meal-1" class="meal-card">
-        <h2>Ground Turkey & Sweet Potato Skillet</h2>
-        <div class="grid">
-            <div>
-                <h3>Ingredients</h3>
-                <ul>
-                    <li>1.5 lbs Ground Turkey</li>
-                    <li>2 Sweet Potatoes (small dice)</li>
-                    <li>1 Bell Pepper (diced)</li>
-                    <li>1/2 Onion (finely chopped)</li>
-                    <li>1/2 tsp Garlic Powder & Salt</li>
-                </ul>
+    <!-- MEAL 2 -->
+    <div id="meal2" class="meal-card">
+        <h2 class="meal-title">Beef & Bacon Burgers with Sweet Potato Fries</h2>
+        <p>A simple griddle dinner paired with a hands-free, soft baked side [cite: User Summary].</p>
+        
+        <h3 class="section-title">Ingredients</h3>
+        <ul>
+            <li>1.5 lbs ground beef (80/20 mix) [cite: User Summary]</li>
+            <li>1 pack sugar-free, Whole30-compliant bacon</li>
+            <li>3 large sweet potatoes (peeled and cut into wedges) [cite: User Summary]</li>
+            <li>2 tbsp avocado oil [cite: User Summary]</li>
+            <li>Salt, pepper, garlic powder</li>
+        </ul>
+
+        <h3 class="section-title">Instructions</h3>
+        <ol>
+            <li>Preheat your indoor kitchen oven to 400°F for the fries. Firing up the outdoor griddle to medium-high [cite: User Summary].</li>
+            <li>Toss sweet potato wedges with avocado oil, salt, and garlic powder. Spread evenly across a baking sheet and bake for 25–30 minutes until soft inside.</li>
+            <li>Shape ground beef into round patties, seasoning only with salt and pepper [cite: User Summary].</li>
+            <li>Lay bacon strips on the griddle first to render down fat. Move them over when crispy.</li>
+            <li>Sear the beef patties directly in the bacon fat, cooking 3–4 minutes per side until fully done. Serve wrapped in plain lettuce leaves or on a plate cleanly [cite: User Summary].</li>
+        </ol>
+
+        <div class="tips-container">
+            <div class="tip-box tip-wfh">
+                <h4>💻 WFH Efficiency Tip</h4>
+                <p>Drop the sweet potatoes in the oven right before your final wrap-up meeting of the day. By the time you drop off the call, the oven work is done and the griddle takes minutes.</p>
             </div>
-            <div>
-                <h3>Instructions</h3>
-                <ol>
-                    <li>Sauté sweet potatoes in a skillet with oil/ghee until they start to soften (8-10 mins).</li>
-                    <li>Add onions and peppers, cooking until translucent.</li>
-                    <li>Add ground turkey and seasonings.</li>
-                    <li>Cook until turkey is browned and sweet potatoes are fork-tender.</li>
-                </ol>
+            <div class="tip-box tip-toddler">
+                <h4>👶 Toddler Safety & Texture</h4>
+                <p>Peeled, thick-cut roasted sweet potato wedges become incredibly soft inside. Mash them slightly with a fork on Mason's plate so they aren't a choking risk [cite: User Summary].</p>
             </div>
         </div>
-        <div class="tip"><strong>WFH Tip:</strong> Dice the sweet potatoes very small (1/4 inch) to cut the cooking time in half.</div>
     </div>
 
-    <div id="meal-2" class="meal-card">
-        <h2>Beef & Peppers with Roasted Potatoes</h2>
-        <div class="grid">
-            <div>
-                <h3>Ingredients</h3>
-                <ul>
-                    <li>1.5 lbs Ground Beef</li>
-                    <li>2 Bell Peppers (sliced)</li>
-                    <li>1.5 lbs Potatoes (cubed)</li>
-                    <li>1/2 Onion (sliced)</li>
-                    <li>Olive Oil, Salt, Pepper</li>
-                </ul>
+    <!-- MEAL 3 -->
+    <div id="meal3" class="meal-card">
+        <h2 class="meal-title">Sheet Pan Garlic Herb Salmon & Summer Squash</h2>
+        <p>A completely hands-off oven meal that requires zero oversight while baking.</p>
+        
+        <h3 class="section-title">Ingredients</h3>
+        <ul>
+            <li>3 center-cut salmon fillets (approx. 1.25 lbs)</li>
+            <li>2 medium yellow squash (sliced into thin rounds) [cite: User Summary]</li>
+            <li>2 medium zucchini (sliced into thin rounds) [cite: User Summary]</li>
+            <li>2 tbsp olive oil</li>
+            <li>1 tbsp dried thyme & oregano mix</li>
+            <li>Salt, pepper, garlic powder</li>
+        </ul>
+
+        <h3 class="section-title">Instructions</h3>
+        <ol>
+            <li>Preheat oven to 400°F. Line a large sheet pan with parchment paper.</li>
+            <li>Arrange salmon fillets in the center of the pan. Brush with olive oil and season with salt, pepper, and garlic powder.</li>
+            <li>Toss squash and zucchini rounds with olive oil, dried herbs, and salt [cite: User Summary]. Scatter them thickly all around the salmon.</li>
+            <li>Roast for 12–15 minutes until the salmon easily flakes with a fork and the squash rounds are totally tender.</li>
+        </ol>
+
+        <div class="tips-container">
+            <div class="tip-box tip-wfh">
+                <h4>💻 WFH Efficiency Tip</h4>
+                <p>Zero active monitoring needed here. Pop the sheet pan in the oven, walk away, and handle your tasks. Minimal cleanup since it's a single pan.</p>
             </div>
-            <div>
-                <h3>Instructions</h3>
-                <ol>
-                    <li>Toss potato cubes in oil and salt. Roast at 400°F for 25-30 mins.</li>
-                    <li>While potatoes roast, brown ground beef in a skillet.</li>
-                    <li>Add onions and peppers to the beef and sauté until soft.</li>
-                    <li>Serve the beef/pepper mix over or alongside the roasted potatoes.</li>
-                </ol>
+            <div class="tip-box tip-toddler">
+                <h4>👶 Toddler Safety & Texture</h4>
+                <p>Salmon flakes perfectly into soft, manageable textures. The summer squash becomes completely melt-in-your-mouth tender when baked, making it simple for a toddler to manage [cite: User Summary].</p>
             </div>
         </div>
-        <div class="tip"><strong>Note:</strong> Ensure your oil is compliant (no soybean or canola oil).</div>
     </div>
 
-    <div id="meal-3" class="meal-card">
-        <h2>Lemon-Herb Roasted Chicken & Carrots</h2>
-        <div class="grid">
-            <div>
-                <h3>Ingredients</h3>
-                <ul>
-                    <li>2 lbs Chicken Thighs</li>
-                    <li>1 lb Carrots (thick coins)</li>
-                    <li>1 Lemon (sliced)</li>
-                    <li>1 tbsp Dried Oregano & Thyme</li>
-                    <li>3 tbsp Olive Oil</li>
-                </ul>
+    <!-- MEAL 4 -->
+    <div id="meal4" class="meal-card">
+        <h2 class="meal-title">One-Pot Creamy Coconut Lime Chicken Thighs & Spinach</h2>
+        <p>A rich, tropical-flavored dinner done in one skillet that keeps chicken moist and tender [cite: User Summary].</p>
+        
+        <h3 class="section-title">Ingredients</h3>
+        <ul>
+            <li>1.5 lbs boneless, skinless chicken thighs (cut into bite-sized pieces) [cite: User Summary]</li>
+            <li>1 can full-fat unsweetened coconut milk [cite: User Summary]</li>
+            <li>1 large bag (5oz) baby spinach [cite: User Summary]</li>
+            <li>2 fresh limes (juiced)</li>
+            <li>1 tbsp avocado oil [cite: User Summary]</li>
+            <li>Salt, pepper, garlic powder</li>
+        </ul>
+
+        <h3 class="section-title">Instructions</h3>
+        <ol>
+            <li>Heat avocado oil over medium heat in a deep skillet or Dutch oven [cite: User Summary].</li>
+            <li>Add the diced chicken thighs, seasoning with salt, pepper, and garlic powder [cite: User Summary]. Sauté until lightly browned (about 6–8 minutes).</li>
+            <li>Pour in the full can of full-fat coconut milk and bring to a light simmer [cite: User Summary]. Turn down heat to low, cover, and let simmer for 10 minutes to tenderize meat.</li>
+            <li>Remove the lid, stir in the fresh lime juice, and dump the baby spinach on top [cite: User Summary]. Stir constantly for 1–2 minutes until the spinach wilts completely into the sauce.</li>
+        </ol>
+
+        <div class="tips-container">
+            <div class="tip-box tip-wfh">
+                <h4>💻 WFH Efficiency Tip</h4>
+                <p>Cutting the chicken into bite-sized pieces *before* cooking cuts total stove time in half. Leftovers reheat beautifully without drying out for lunch tomorrow.</p>
             </div>
-            <div>
-                <h3>Instructions</h3>
-                <ol>
-                    <li>Preheat oven to 400°F.</li>
-                    <li>Place chicken and carrots on a large sheet pan.</li>
-                    <li>Drizzle with oil and rub in the herbs, salt, and pepper.</li>
-                    <li>Top chicken with lemon slices.</li>
-                    <li>Roast for 35-40 mins until chicken is 165°F and carrots are very soft.</li>
-                </ol>
+            <div class="tip-box tip-toddler">
+                <h4>👶 Toddler Safety & Texture</h4>
+                <p>Chicken thighs contain more moisture than breasts and don't get dry or tough [cite: User Summary]. The spinach wilts down completely into a soft sauce, eliminating stringy choking hazards [cite: User Summary].</p>
             </div>
         </div>
-        <div class="tip"><strong>Toddler Tip:</strong> Roasted carrots become very sweet and soft, making them a perfect side for pickier eaters.</div>
     </div>
 </div>
 
 <script>
-    function showMeal(index) {
-        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-        document.querySelectorAll('.meal-card').forEach(card => card.classList.remove('active'));
-        document.querySelectorAll('.tab-btn')[index].classList.add('active');
-        document.getElementById('meal-' + index).classList.add('active');
+    function switchTab(event, mealId) {
+        // Hide all cards
+        const cards = document.querySelectorAll('.meal-card');
+        cards.forEach(card => card.classList.remove('active'));
+
+        // Remove active class from buttons
+        const buttons = document.querySelectorAll('.tab-btn');
+        buttons.forEach(btn => btn.classList.remove('active'));
+
+        // Show target card & activate button
+        document.getElementById(mealId).classList.add('active');
+        event.currentTarget.classList.add('active');
     }
 </script>
 
